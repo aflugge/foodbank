@@ -16,7 +16,7 @@
         <div class="container col-lg-8 card-deck text-left" id="wrap">
           <div class="card box-shadow">
             <div class="card-header text-center">
-              <h4 class="my-0 font-weight-normal">Foodbank shopping list</h4>
+              <h1 class="my-0 font-weight-normal">Foodbank shopping list</h1>
             </div>
             <div class="card-body">
 			<div id="shoppinglist">
@@ -67,9 +67,29 @@
       }
 	  
 	  function itemText(item) {
-		var element = document.createElement("h5");
-		element.innerText = item['name'];
-		document.getElementById("shoppinglist").appendChild(element);
+	    var nodeElem = document.createElement('div');
+		nodeElem.setAttribute('class','row bg-light text-left justify-content-center align-items-center');
+		nodeElem.setAttribute('style','min-height:120px');
+		var imageDiv = document.createElement('div');
+		imageDiv.setAttribute('class','col-1');
+		imageDiv.setAttribute('style','min-width:120px');
+		var imageElem = document.createElement('img');
+		imageElem.setAttribute('src','images/'+item['image']);
+		imageElem.setAttribute('height','100px');
+		imageElem.setAttribute('width','100px');
+		imageDiv.appendChild(imageElem);
+		var textDiv = document.createElement('div');
+		textDiv.setAttribute('class','col');
+		var textElem = document.createElement("h2");
+		textElem.innerText = item['name'];
+		textDiv.appendChild(textElem);
+		nodeElem.appendChild(imageDiv);
+		nodeElem.appendChild(textDiv);
+		document.getElementById("shoppinglist").appendChild(nodeElem);
+		var emptyRow = document.createElement('div');
+		emptyRow.setAttribute('class','row justify-content-center align-items-center');
+		emptyRow.setAttribute('style','min-height:10px');
+		document.getElementById("shoppinglist").appendChild(emptyRow);
 	  }
     </script>
 
